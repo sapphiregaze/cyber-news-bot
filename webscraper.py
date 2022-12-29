@@ -1,3 +1,4 @@
+import os
 import requests
 from bs4 import BeautifulSoup
 
@@ -8,18 +9,12 @@ news = 'https://feeds.feedburner.com/TheHackersNews'
 source = requests.get(news)
 plaintext = BeautifulSoup(source.text, 'xml')
 
-# stores all the plaintext xml into a separate file
-def data():
-    f = open('data.txt', 'w')
-    f.write(str(plaintext))
-    f.close()
-
 # different type of data scraped from the xml stylesheet
 title = plaintext.find_all('title')
 publishDate = plaintext.find_all('pubDate')
 link = plaintext.find_all('link')
 description = plaintext.find_all('description')
-image = plaintext.find_all('media:thumbnail')
+image = plaintext.find_all('enclosure')
 
 # the followings are functions that parse the data of an individual tag
 def scrapeTitle(num):
@@ -27,11 +22,11 @@ def scrapeTitle(num):
         return i.text
 
 def scrapeDate(num):
-    for i in publishDate[num+1:num+2]:
+    for i in publishDate[num:num+1]:
         return i.text
 
 def scrapeLink(num):
-    for i in link[num+1:num+2]:
+    for i in link[num+2:num+3]:
         return i.text
 
 def scrapeDesc(num):
@@ -41,3 +36,9 @@ def scrapeDesc(num):
 def scrapeImage(num):
     for i in image[num:num+1]:
         return i.get('url')
+
+# stores the titles xml into a separate file
+def data(num):
+    file = open('.dat', 'w')
+    file.write(scrapeTitle(num))
+    file.close()
