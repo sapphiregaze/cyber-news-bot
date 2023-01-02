@@ -1,4 +1,3 @@
-import os
 import requests
 from bs4 import BeautifulSoup
 
@@ -38,7 +37,15 @@ def scrapeImage(num):
         return i.get('url')
 
 # stores the titles xml into a separate file
-def data(num):
+def writeTitle():
     file = open('.dat', 'w')
-    file.write(scrapeTitle(num))
+    file.write(scrapeTitle(0))
     file.close()
+
+def compareTitle():
+    file = open('.dat', 'r')
+    content = file.readline()
+    file.close
+    if content == scrapeTitle(0):
+        return True
+    return False
