@@ -42,6 +42,7 @@ def writeTitle():
     file.write(scrapeTitle(0))
     file.close()
 
+# compare if the title stored in file is the same as current title
 def compareTitle():
     file = open('.dat', 'r')
     content = file.readline()

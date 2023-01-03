@@ -1,0 +1,4 @@
+python-dotenv==0.20.0
+discord==2.1.0
+beautifulsoup4==4.11.1
+requests==2.27.1
