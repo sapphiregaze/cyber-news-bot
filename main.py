@@ -48,7 +48,7 @@ class CyberBot(Client):
         print(f'{divider}\nCurrently logged in as {self.user} at {timedate()}. (ID: {self.user.id})\n{divider}')
 
     # check for new article every 30 minutes
-    @tasks.loop(minutes=30)
+    @tasks.loop(minutes=10)
     async def check_new(self):
         channel = self.get_channel(CHANNEL_ID)
         print(f'{self.user} compared the latest cybersecurity news articles at {timedate()}.')
