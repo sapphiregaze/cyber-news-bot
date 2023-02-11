@@ -7,7 +7,7 @@ news = 'https://feeds.feedburner.com/TheHackersNews'
 def refreshFeed(tag):
     # request the xml of the website and parse it with bs4
     source = requests.get(news)
-    plaintext = BeautifulSoup(source.text, 'xml')
+    plaintext = BeautifulSoup(source.text, features='xml')
             
     title = plaintext.find_all('title')
     publishDate = plaintext.find_all('pubDate')

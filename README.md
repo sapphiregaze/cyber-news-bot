@@ -33,6 +33,8 @@ Finally, go into main.py and change the **CHANNEL_ID** variable to the ID of the
 CHANNEL_ID = YOUR_CHANNEL_ID
 ~~~
 
+PS. Python 3.10 is required for program to run properly.
+
 ## Execute the program
 
 Run the following command.
